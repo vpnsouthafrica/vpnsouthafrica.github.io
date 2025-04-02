@@ -1,0 +1,353 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnsouthafrica.github.io/news/article-86409.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>RabbitMQ数据同步一致性解决方案</title>
+    <link rel="icon" href="/assets/website/img/v2raynode/favicon.ico" type="image/x-icon"/>
+        <meta name="description" content="我们知道在使用RabbitMQ时，生产者将消息发布出去之后，消息是否顺利到达broker代理服务器呢？默认情况下发布操作没有任何信息返回给生产者，也就是生产者是不知道消息有没有顺利到达broker。如" />
+    
+    <meta name="author" content="免费南非VPN 订阅机场节点中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnsouthafrica.github.io/news/article-86409.htm" />
+    <meta property="og:site_name" content="免费南非VPN 订阅机场节点中文网" />
+    <meta property="og:title" content="RabbitMQ数据同步一致性解决方案" />
+    <meta property="og:image" content="https://vpnsouthafrica.github.io/uploads/20240303/e997e06ae806c26a19867e890cd18798.webp" />
+        <meta property="og:release_date" content="2025-04-01T09:50:37" />
+    <meta property="og:updated_time" content="2025-04-01T09:50:37" />
+        <meta property="og:description" content="我们知道在使用RabbitMQ时，生产者将消息发布出去之后，消息是否顺利到达broker代理服务器呢？默认情况下发布操作没有任何信息返回给生产者，也就是生产者是不知道消息有没有顺利到达broker。如" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="RabbitMQ数据同步一致性解决方案">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/website/css/v2raynode/style-starter.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJJ788C1MD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WJJ788C1MD');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                                    <span>免费南非VPN</span>
+                                </a>
+
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">免费节点</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">新闻资讯</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">客户端</a>
+                        </li>
+                                            </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">RabbitMQ数据同步一致性解决方案</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/news/">新闻资讯</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> </h1> <p>我们知道在使用RabbitMQ时，生产者将消息发布出去之后，消息是否顺利到达broker代理服务器呢？默认情况下发布操作没有任何信息返回给生产者，也就是生产者是不知道消息有没有顺利到达broker。如果在消息到达broker之前已经丢失了，那发布的消息就更不会到达队列并被消费者消费。如果出现上述情况，就会造成生产者发布的消息与消费者消费的消息不一致的问题。</p> </h1> <p>RabbitMQ提供以下两种方式解决上述问题。</p> <h2 id="21事务机制">2.1事务机制</h2> <p>事务机制能够解决生产者与broker之间消息确认的问题，只有消息成功被broker接受，事务才能提交成功，否则就进行事务回滚操作并进行消息重发。但是使用事务机制会降低RabbitMQ的消息吞吐量，不适用于需要发布大量消息的业务场景。</p> <h2 id="22消息确认机制">2.2消息确认机制</h2> <p>生产者将信道设置成confirm模式，一旦信道进入confirm模式，所有在该信道上面发布的消息都会被指派一个唯一的ID(从1开始)，一旦消息被投递到所有匹配的队列之后，broker就会发送一个确认给生产者（包含消息的唯一ID），这就使得生产者知道消息已经正确到达目的队列了。<br /> 与事务机制相比较，确认机制采用异步回调方式来处理确认消息，性能得到了较大的提升，可以确保数据同步的一致性。</p> </h1> <p>为了最大限度的提升MQ数据同步的性能，自己制定了一个更好的解决方案，现分享如下。<br /><strong>解决方案：MQ+Redis+接口。</strong><br /> MQ：作为消息队列中间件负责同步数据；<br /> Redis：负责存储每天（或每批次等）生产者已发送数据的唯一标识，即全量存储已发送数据唯一标识，方便消费者检查并同步失败数据；<br /> 接口：作为补偿措施，用于消费者获取同步失败的数据。</p> <p>下面分两个使用场景说明。</p> </h1> <p>(1)生产者发送数据至MQ Server，同时记录已发送数据的唯一标识（如id），每同步一批次（比如N条）后，再把该批次的唯一标识存入Redis。<br /> (2)存储唯一标识的key及过期时间，需要根据数据的同步策略具体制定。比如：若每天同步一次数据，就可以以“队列名称+日期”为key，把这一天所有生产者已发送数据的唯一标识存入同一个list中。<br /> (3)消费者消费数据后，负责检查已消费数据唯一标识与Redis中唯一标识是否有差异，若存在差异，则说明有数据同步失败。<br /> (4)对于同步失败数据，消费者调用生产者提供的接口实时获取。接口以唯一标识为入参，并控制每次请求的数据量，比如每次最多同步200条等。</p> </h1> <p>复杂业务数据是指生成者需要一定的业务逻辑处理产生的数据。<br /> 关于复杂业务数据的同步，考虑到同步失败的场景，需要持久化这类数据。然后按单表数据同步场景进行数据的同步。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-86407.htm">JVM_01 内存结构(程序计数器、虚拟机栈、本地方法栈)</a></p>
+                                        <p>下一个：<a href="/news/article-87123.htm">宠物领养协议具有法律效应吗为什么还要签字 宠物领养协议具有法律效应吗为什么还要签字呢</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-83529.htm" title="卖宠物粮的上市公司（卖宠物粮的上市公司名单）">卖宠物粮的上市公司（卖宠物粮的上市公司名单）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-subscribe-node.htm" title="免费南非VPN | 3月10日19.3M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享">免费南非VPN | 3月10日19.3M/S|免费Shadowrocket/V2ray/Clash/SSR免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-79329.htm" title="CI框架分页类及其实现">CI框架分页类及其实现</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-free-node-subscribe.htm" title="免费南非VPN | 3月11日21.3M/S|免费Shadowrocket/SSR/Clash/V2ray免费节点订阅分享">免费南非VPN | 3月11日21.3M/S|免费Shadowrocket/SSR/Clash/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-87123.htm" title="宠物领养协议具有法律效应吗为什么还要签字 宠物领养协议具有法律效应吗为什么还要签字呢">宠物领养协议具有法律效应吗为什么还要签字 宠物领养协议具有法律效应吗为什么还要签字呢</a></li>
+                        <li class="py-2"><a href="/news/article-76602.htm" title="动物疫苗行业会议（动物疫苗新闻）">动物疫苗行业会议（动物疫苗新闻）</a></li>
+                        <li class="py-2"><a href="/news/article-68636.htm" title="宠物粮食行业发展前景分析论文题目 宠物粮食行业发展前景分析论文题目怎么写">宠物粮食行业发展前景分析论文题目 宠物粮食行业发展前景分析论文题目怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-85691.htm" title="动物注射疫苗前后注意事项有哪些症状呢（动物打疫苗的作用）">动物注射疫苗前后注意事项有哪些症状呢（动物打疫苗的作用）</a></li>
+                        <li class="py-2"><a href="/news/article-77279.htm" title="vue实力踩坑 当前页push当前页无效的解决_vue.js_">vue实力踩坑 当前页push当前页无效的解决_vue.js_</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-free-high-speed-nodes.htm" title="免费南非VPN | 3月7日22.3M/S|免费Clash/SSR/Shadowrocket/V2ray免费节点订阅分享">免费南非VPN | 3月7日22.3M/S|免费Clash/SSR/Shadowrocket/V2ray免费节点订阅分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>免费南非VPN 订阅机场节点中文网 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/website/js/frontend/v2raynode/jquery-3.5.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/website/js/frontend/v2raynode/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/website/js/frontend/v2raynode/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/website/js/frontend/v2raynode/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/website/js/frontend/v2raynode/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
