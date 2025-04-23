@@ -1,4 +1,4 @@
-# 免费南非VPN | 4月19日18.5M/S|免费SSR/V2ray/Shadowrocket/Clash免费节点订阅分享  更新时间 2025-04-19 09:15:52
+# 免费南非VPN | 4月23日18.8M/S|免费Shadowrocket/Clash/V2ray/SSR免费节点订阅分享  更新时间 2025-04-23 09:05:46
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://vpnsouthafrica.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://vpnsouthafrica.github.io/uploads/2025/04/0-20250419.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/04/1-20250419.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/04/2-20250419.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/04/3-20250419.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/04/4-20250419.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/04/0-20250423.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/04/1-20250423.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/04/2-20250423.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/04/3-20250423.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/04/4-20250423.yaml
 
 ### V2ray订阅链接
 
-- https://vpnsouthafrica.github.io/uploads/2025/04/0-20250419.txt
-- https://vpnsouthafrica.github.io/uploads/2025/04/1-20250419.txt
-- https://vpnsouthafrica.github.io/uploads/2025/04/2-20250419.txt
-- https://vpnsouthafrica.github.io/uploads/2025/04/3-20250419.txt
-- https://vpnsouthafrica.github.io/uploads/2025/04/4-20250419.txt
+- https://vpnsouthafrica.github.io/uploads/2025/04/0-20250423.txt
+- https://vpnsouthafrica.github.io/uploads/2025/04/1-20250423.txt
+- https://vpnsouthafrica.github.io/uploads/2025/04/2-20250423.txt
+- https://vpnsouthafrica.github.io/uploads/2025/04/3-20250423.txt
+- https://vpnsouthafrica.github.io/uploads/2025/04/4-20250423.txt
 
 ### Sing-box订阅链接
 
-- https://vpnsouthafrica.github.io/uploads/2025/04/20250419.json
+- https://vpnsouthafrica.github.io/uploads/2025/04/20250423.json
 
 ## 更多clash节点订阅 ：
 
