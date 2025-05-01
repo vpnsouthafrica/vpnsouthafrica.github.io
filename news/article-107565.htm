@@ -1,0 +1,358 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnsouthafrica.github.io/news/article-107565.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>C ++程序实施Rabin-Miller素性测试以检查给定数字是否为素数</title>
+    <link rel="icon" href="/assets/website/img/v2raynode/favicon.ico" type="image/x-icon"/>
+        <meta name="description" content="Rabin-Miller素数测试用于检查给定数字是否为素数。它类似于格式素数和Solovay-Stressen检验。这项测试最早是由俄罗斯数学家MM Artjuhov发现的。 算法 Begin &nb" />
+    
+    <meta name="author" content="免费南非VPN 订阅机场节点中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnsouthafrica.github.io/news/article-107565.htm" />
+    <meta property="og:site_name" content="免费南非VPN 订阅机场节点中文网" />
+    <meta property="og:title" content="C ++程序实施Rabin-Miller素性测试以检查给定数字是否为素数" />
+    <meta property="og:image" content="https://vpnsouthafrica.github.io/uploads/20240303/1b790a8e655bafeb60c84eb3673fb439.webp" />
+        <meta property="og:release_date" content="2025-04-29T08:04:34" />
+    <meta property="og:updated_time" content="2025-04-29T08:04:34" />
+        <meta property="og:description" content="Rabin-Miller素数测试用于检查给定数字是否为素数。它类似于格式素数和Solovay-Stressen检验。这项测试最早是由俄罗斯数学家MM Artjuhov发现的。 算法 Begin &nb" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C ++程序实施Rabin-Miller素性测试以检查给定数字是否为素数">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/website/css/v2raynode/style-starter.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJJ788C1MD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WJJ788C1MD');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                                    <span>免费南非VPN</span>
+                                </a>
+
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">免费节点</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">新闻资讯</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">客户端</a>
+                        </li>
+                                            </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">C ++程序实施Rabin-Miller素性测试以检查给定数字是否为素数</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/news/">新闻资讯</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p>Rabin-Miller素数测试用于检查给定数字是否为素数。它类似于格式素数和Solovay-Stressen检验。这项测试最早是由俄罗斯数学家MM Artjuhov发现的。</p> <h2>算法</h2> <pre>Begin &nbsp;&nbsp;&nbsp;ll&nbsp;mulmod(ll&nbsp;a,&nbsp;ll&nbsp;b,&nbsp;ll&nbsp;m) &nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;0,y&nbsp;=&nbsp;a&nbsp;mod&nbsp;m &nbsp;&nbsp;&nbsp;while&nbsp;(b&nbsp;&gt;&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(b&nbsp;mod&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compute&nbsp;x&nbsp;=&nbsp;(x&nbsp;+&nbsp;y)&nbsp;mod&nbsp;m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;(y&nbsp;*&nbsp;2)&nbsp;mod&nbsp;m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;b/&nbsp;2 &nbsp;&nbsp;&nbsp;return&nbsp;x&nbsp;mod&nbsp;m. End  Begin &nbsp;&nbsp;&nbsp;ll&nbsp;modulo(ll&nbsp;base,&nbsp;ll&nbsp;e,&nbsp;ll&nbsp;m) &nbsp;&nbsp;&nbsp;Initialize: &nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;1 &nbsp;&nbsp;&nbsp;ll&nbsp;y&nbsp;=&nbsp;base &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;mod&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;(x&nbsp;*&nbsp;y)&nbsp;mod&nbsp;m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;(y&nbsp;*&nbsp;y)&nbsp;mod&nbsp;m &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2; &nbsp;&nbsp;&nbsp;return&nbsp;x&nbsp;mod&nbsp;m End  Begin &nbsp;&nbsp;&nbsp;bool&nbsp;Miller(ll&nbsp;p,&nbsp;int&nbsp;iteration) &nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;&lt;&nbsp;2) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;!=&nbsp;2&nbsp;and&nbsp;p&nbsp;mod&nbsp;2==0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compute:&nbsp;ll&nbsp;s&nbsp;=&nbsp;p&nbsp;-&nbsp;1 &nbsp;&nbsp;&nbsp;while&nbsp;(s&nbsp;mod&nbsp;2&nbsp;==&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;=&nbsp;s/&nbsp;2; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;0&nbsp;to&nbsp;iteration&nbsp;-&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Do &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;a&nbsp;=&nbsp;rand()&nbsp;mod&nbsp;(p&nbsp;-&nbsp;1)&nbsp;+&nbsp;1,&nbsp;temp&nbsp;=&nbsp;s &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;mod&nbsp;=&nbsp;modulo(a,&nbsp;temp,&nbsp;p) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(temp&nbsp;!=&nbsp;p&nbsp;-&nbsp;1&nbsp;and&nbsp;mod&nbsp;!=&nbsp;1&nbsp;and&nbsp;mod&nbsp;!=&nbsp;p&nbsp;-&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mod&nbsp;=&nbsp;mulmod(mod,&nbsp;mod,&nbsp;p); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;*=&nbsp;2; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(mod&nbsp;!=&nbsp;p&nbsp;-&nbsp;1&nbsp;&amp;&amp;&nbsp;temp&nbsp;%&nbsp;2&nbsp;==&nbsp;0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true End</pre> <h2>范例程式码</h2> <pre>#include&nbsp;&lt;iostream&gt; #include&lt;stdlib.h&gt; #define&nbsp;ll&nbsp;long&nbsp;long using&nbsp;namespace&nbsp;std; ll&nbsp;mulmod(ll&nbsp;a,&nbsp;ll&nbsp;b,&nbsp;ll&nbsp;m)//It&nbsp;returns&nbsp;true&nbsp;if&nbsp;number&nbsp;is&nbsp;prime&nbsp;otherwise&nbsp;false&nbsp;{ &nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;0,y&nbsp;=&nbsp;a&nbsp;%&nbsp;m; &nbsp;&nbsp;&nbsp;while&nbsp;(b&nbsp;&gt;&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(b&nbsp;%&nbsp;2&nbsp;==&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;(x&nbsp;+&nbsp;y)&nbsp;%&nbsp;m; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;(y&nbsp;*&nbsp;2)&nbsp;%&nbsp;m; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;/=&nbsp;2; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;x&nbsp;%&nbsp;m; }  ll&nbsp;modulo(ll&nbsp;base,&nbsp;ll&nbsp;e,&nbsp;ll&nbsp;m)&nbsp;{ &nbsp;&nbsp;&nbsp;ll&nbsp;x&nbsp;=&nbsp;1; &nbsp;&nbsp;&nbsp;ll&nbsp;y&nbsp;=&nbsp;base; &nbsp;&nbsp;&nbsp;while&nbsp;(e&nbsp;&gt;&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;%&nbsp;2&nbsp;==&nbsp;1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;(x&nbsp;*&nbsp;y)&nbsp;%&nbsp;m; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;(y&nbsp;*&nbsp;y)&nbsp;%&nbsp;m; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;=&nbsp;e&nbsp;/&nbsp;2; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;x&nbsp;%&nbsp;m; }  bool&nbsp;Miller(ll&nbsp;p,&nbsp;int&nbsp;iteration)&nbsp;{ &nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;&lt;&nbsp;2)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;if&nbsp;(p&nbsp;!=&nbsp;2&nbsp;&amp;&amp;&nbsp;p&nbsp;%&nbsp;2==0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;ll&nbsp;s&nbsp;=&nbsp;p&nbsp;-&nbsp;1; &nbsp;&nbsp;&nbsp;while&nbsp;(s&nbsp;%&nbsp;2&nbsp;==&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;/=&nbsp;2; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;iteration;&nbsp;i++)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;a&nbsp;=&nbsp;rand()&nbsp;%&nbsp;(p&nbsp;-&nbsp;1)&nbsp;+&nbsp;1,&nbsp;temp&nbsp;=&nbsp;s; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ll&nbsp;mod&nbsp;=&nbsp;modulo(a,&nbsp;temp,&nbsp;p); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(temp&nbsp;!=&nbsp;p&nbsp;-&nbsp;1&nbsp;&amp;&amp;&nbsp;mod&nbsp;!=&nbsp;1&nbsp;&amp;&amp;&nbsp;mod&nbsp;!=&nbsp;p&nbsp;-&nbsp;1)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mod&nbsp;=&nbsp;mulmod(mod,&nbsp;mod,&nbsp;p); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;*=&nbsp;2; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(mod&nbsp;!=&nbsp;p&nbsp;-&nbsp;1&nbsp;&amp;&amp;&nbsp;temp&nbsp;%&nbsp;2&nbsp;==&nbsp;0)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;return&nbsp;true; }  int&nbsp;main()&nbsp;{ &nbsp;&nbsp;&nbsp;int&nbsp;iteration&nbsp;=&nbsp;10; &nbsp;&nbsp;&nbsp;ll&nbsp;num; &nbsp;&nbsp;&nbsp;cout&lt;&lt;"Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;"; &nbsp;&nbsp;&nbsp;cin&gt;&gt;num; &nbsp;&nbsp;&nbsp;if&nbsp;(Miller(num,&nbsp;iteration)) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;else &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;num&lt;&lt;"&nbsp;is&nbsp;not&nbsp;prime"&lt;&lt;endl; &nbsp;&nbsp;&nbsp;return&nbsp;0; }</pre> <p>输出结果</p> <pre>Enter&nbsp;integer&nbsp;to&nbsp;test&nbsp;primality:&nbsp;26 26&nbsp;is&nbsp;not&nbsp;prime</pre> <div></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-106510.htm">附近仓鼠宠物店（附近仓鼠宠物店地址）</a></p>
+                                        <p>下一个：<a href="/news/article-107567.htm">动物疫苗的使用方法及注意事项视频讲解图片 动物疫苗的使用方法及注意事项视频讲解图片大全</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-94510.htm" title="Azure Terraform（十一）Azure DevOps Pipeline 内的动态临时变量的使用">Azure Terraform（十一）Azure DevOps Pipeline 内的动态临时变量的使用</a></li>
+                        <li class="py-2"><a href="/news/article-102620.htm" title="Mac上解决dose not contain the JNI_CreateJavaVM symbol">Mac上解决dose not contain the JNI_CreateJavaVM symbol</a></li>
+                        <li class="py-2"><a href="/news/article-95258.htm" title="有免费领养宠物的软件吗安全吗可靠吗（有免费领养宠物的软件吗安全吗可靠吗可信吗）">有免费领养宠物的软件吗安全吗可靠吗（有免费领养宠物的软件吗安全吗可靠吗可信吗）</a></li>
+                        <li class="py-2"><a href="/news/article-105728.htm" title="费城在美国的哪个州?(费城在美国哪里)">费城在美国的哪个州?(费城在美国哪里)</a></li>
+                        <li class="py-2"><a href="/news/article-97439.htm" title="宠物粮销售渠道（宠物粮销售好做吗）">宠物粮销售渠道（宠物粮销售好做吗）</a></li>
+                        <li class="py-2"><a href="/news/article-92259.htm" title="Flutter之Decoration（编写圆角竖线）">Flutter之Decoration（编写圆角竖线）</a></li>
+                        <li class="py-2"><a href="/news/article-105076.htm" title="狗狗领养平台有哪些软件（狗狗领养免费平台）">狗狗领养平台有哪些软件（狗狗领养免费平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-26-free-v2ray.htm" title="免费南非VPN | 4月26日21.8M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享">免费南非VPN | 4月26日21.8M/S|免费SSR/Clash/Shadowrocket/V2ray免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-21-free-node-subscribe-links.htm" title="免费南非VPN | 4月21日20.2M/S|免费SSR/V2ray/Clash/Shadowrocket免费节点订阅分享">免费南非VPN | 4月21日20.2M/S|免费SSR/V2ray/Clash/Shadowrocket免费节点订阅分享</a></li>
+                        <li class="py-2"><a href="/news/article-107567.htm" title="动物疫苗的使用方法及注意事项视频讲解图片 动物疫苗的使用方法及注意事项视频讲解图片大全">动物疫苗的使用方法及注意事项视频讲解图片 动物疫苗的使用方法及注意事项视频讲解图片大全</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    <p>免费南非VPN 订阅机场节点中文网 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/website/js/frontend/v2raynode/jquery-3.5.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/website/js/frontend/v2raynode/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/website/js/frontend/v2raynode/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/website/js/frontend/v2raynode/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/website/js/frontend/v2raynode/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
