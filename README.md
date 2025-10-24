@@ -1,4 +1,4 @@
-# 免费南非VPN | 8月25日20.2M/S|免费Clash/SSR/V2ray/Shadowrocket免费节点订阅分享  更新时间 2025-08-25 10:41:39
+# 免费南非VPN | 10月24日21.7M/S|免费V2ray节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点免费节点订阅分享  更新时间 2025-10-24 10:42:38
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://vpnsouthafrica.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -7,27 +7,27 @@
 
 ## 订阅链接：
 
-### Clash订阅链接
+### 免费Clash节点订阅链接
 
-- https://vpnsouthafrica.github.io/uploads/2025/08/0-20250825.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/08/1-20250825.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/08/2-20250825.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/08/3-20250825.yaml
-- https://vpnsouthafrica.github.io/uploads/2025/08/4-20250825.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/10/0-20251024.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/10/1-20251024.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/10/2-20251024.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/10/3-20251024.yaml
+- https://vpnsouthafrica.github.io/uploads/2025/10/4-20251024.yaml
 
-### V2ray订阅链接
+### 免费V2ray节点订阅链接
 
-- https://vpnsouthafrica.github.io/uploads/2025/08/0-20250825.txt
-- https://vpnsouthafrica.github.io/uploads/2025/08/1-20250825.txt
-- https://vpnsouthafrica.github.io/uploads/2025/08/2-20250825.txt
-- https://vpnsouthafrica.github.io/uploads/2025/08/3-20250825.txt
-- https://vpnsouthafrica.github.io/uploads/2025/08/4-20250825.txt
+- https://vpnsouthafrica.github.io/uploads/2025/10/0-20251024.txt
+- https://vpnsouthafrica.github.io/uploads/2025/10/1-20251024.txt
+- https://vpnsouthafrica.github.io/uploads/2025/10/2-20251024.txt
+- https://vpnsouthafrica.github.io/uploads/2025/10/3-20251024.txt
+- https://vpnsouthafrica.github.io/uploads/2025/10/4-20251024.txt
 
-### Sing-box订阅链接
+### 免费Sing-box节点订阅链接
 
-- https://vpnsouthafrica.github.io/uploads/2025/08/20250825.json
+- https://vpnsouthafrica.github.io/uploads/2025/10/20251024.json
 
-## 更多clash节点订阅 ：
+## 更多Clash节点订阅 ：
 
 
 ### 高速机场推荐1【<a href="https://www.nfsq.us/#/register?code=UTg5SIHV" target="_blank">农夫山泉</a>】
