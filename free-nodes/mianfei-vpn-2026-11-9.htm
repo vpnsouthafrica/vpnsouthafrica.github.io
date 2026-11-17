@@ -289,19 +289,9 @@ A：Quantumult在规则管理上更加细腻，适合高级用户。Stash和Loon
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 与 Shadowsocks 哪个更安全？</h5></div>
+    <div class="panel-heading"><h5>Netch 如何区分全局代理和规则代理？</h5></div>
     <div class="panel-body">
-        VMess 使用动态认证机制，防止重放攻击，而 Shadowsocks 依赖静态密钥。总体来说，VMess 的安全性更强，尤其在应对 DPI 检测和中间人攻击时表现更优。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 的 TLS 选项何时使用最合适？</h5></div>
-    <div class="panel-body">
-        TLS 可提供加密和伪装，适合在高封锁或不稳定网络环境使用。结合域名伪装和证书，可让流量看起来像普通 HTTPS 请求，提升抗封锁能力和隐蔽性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 服务器启动后提示端口被占用，该如何处理？</h5></div>
-    <div class="panel-body">
-        先用 netstat 或 ss 工具查看占用该端口的进程（例如 `ss -ltnp`），确认是旧进程或其他服务占用。停止占用进程或修改 V2Ray 配置端口，然后重启服务并检查防火墙规则是否开放了新端口。<hr />    </div>
+        全局代理会将所有流量通过节点转发，而规则代理仅对指定 IP、端口或应用生效。用户可根据需求选择代理模式，实现流量优化和不同应用的最佳网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 如何按 IP 段实现智能分流？</h5></div>
@@ -314,9 +304,29 @@ A：Quantumult在规则管理上更加细腻，适合高级用户。Stash和Loon
         V2Ray 支持按用户标签或端口匹配应用流量，结合策略组可实现指定应用走特定节点。这样可以保证游戏、视频和浏览器流量各自走最优线路，提高访问效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 如何区分全局代理和规则代理？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
     <div class="panel-body">
-        全局代理会将所有流量通过节点转发，而规则代理仅对指定 IP、端口或应用生效。用户可根据需求选择代理模式，实现流量优化和不同应用的最佳网络体验。<hr />    </div>
+        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 与 Shadowsocks 哪个更安全？</h5></div>
+    <div class="panel-body">
+        VMess 使用动态认证机制，防止重放攻击，而 Shadowsocks 依赖静态密钥。总体来说，VMess 的安全性更强，尤其在应对 DPI 检测和中间人攻击时表现更优。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 的 TLS 选项何时使用最合适？</h5></div>
+    <div class="panel-body">
+        TLS 可提供加密和伪装，适合在高封锁或不稳定网络环境使用。结合域名伪装和证书，可让流量看起来像普通 HTTPS 请求，提升抗封锁能力和隐蔽性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 的 Socks 模式有什么作用？</h5></div>
+    <div class="panel-body">
+        Netch 的 Socks 模式允许用户将代理仅应用于指定进程，而非全局网络。此模式非常适合单个游戏或程序代理，避免影响其他应用的连接方式与速度。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 服务器启动后提示端口被占用，该如何处理？</h5></div>
+    <div class="panel-body">
+        先用 netstat 或 ss 工具查看占用该端口的进程（例如 `ss -ltnp`），确认是旧进程或其他服务占用。停止占用进程或修改 V2Ray 配置端口，然后重启服务并检查防火墙规则是否开放了新端口。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 是否可以代理局域网设备？</h5></div>
@@ -324,19 +334,9 @@ A：Quantumult在规则管理上更加细腻，适合高级用户。Stash和Loon
         可以。Netch 支持启用局域网共享功能，使同一网络下的其他设备通过主机的代理访问外网。需确保防火墙允许入站连接，且代理端口在局域网中开放。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
-    <div class="panel-body">
-        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>QuantumultX 支持按端口进行流量分流吗？</h5></div>
     <div class="panel-body">
-        支持。用户可以根据端口号将不同应用流量分流到指定节点。例如游戏走低延迟节点，浏览网页走普通节点，实现精准流量管理和优化网络访问速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 的 Socks 模式有什么作用？</h5></div>
-    <div class="panel-body">
-        Netch 的 Socks 模式允许用户将代理仅应用于指定进程，而非全局网络。此模式非常适合单个游戏或程序代理，避免影响其他应用的连接方式与速度。    </div>
+        支持。用户可以根据端口号将不同应用流量分流到指定节点。例如游戏走低延迟节点，浏览网页走普通节点，实现精准流量管理和优化网络访问速度。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -384,16 +384,16 @@ A：Quantumult在规则管理上更加细腻，适合高级用户。Stash和Loon
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-10-10-top-vpn-node.htm" title="免费南非VPN | 10月10日22.2M/S|免费Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅分享">免费南非VPN | 10月10日22.2M/S|免费Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点/Clash节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/top-vpn-2026-11-7.htm" title="免费南非VPN | 11月7日19M/S|免费Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Trojan节点/Clash节点免费节点订阅分享">免费南非VPN | 11月7日19M/S|免费Shadowrocket节点/Singbox节点/V2ray节点/SSR节点/Trojan节点/Clash节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-16-node-share.htm" title="免费南非VPN | 10月16日21.5M/S|免费Trojan节点/Clash节点/SSR节点/Shadowrocket节点/Singbox节点/V2ray节点免费节点订阅分享">免费南非VPN | 10月16日21.5M/S|免费Trojan节点/Clash节点/SSR节点/Shadowrocket节点/Singbox节点/V2ray节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/vpn-github-2026-10-21.htm" title="免费南非VPN | 10月21日19M/S|免费Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点/Trojan节点免费节点订阅分享">免费南非VPN | 10月21日19M/S|免费Shadowrocket节点/Clash节点/V2ray节点/Singbox节点/SSR节点/Trojan节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/top-vpn-2026-11-5.htm" title="免费南非VPN | 11月5日21.6M/S|免费V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点免费节点订阅分享">免费南非VPN | 11月5日21.6M/S|免费V2ray节点/Clash节点/Singbox节点/Trojan节点/SSR节点/Shadowrocket节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-18-vpn-proxy.htm" title="免费南非VPN | 10月18日21.1M/S|免费Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点免费节点订阅分享">免费南非VPN | 10月18日21.1M/S|免费Singbox节点/SSR节点/Clash节点/Trojan节点/Shadowrocket节点/V2ray节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-11-3.htm" title="免费南非VPN | 11月3日19.9M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅分享">免费南非VPN | 11月3日19.9M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/top-vpn-2026-10-31.htm" title="免费南非VPN | 10月31日20.9M/S|免费Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Trojan节点免费节点订阅分享">免费南非VPN | 10月31日20.9M/S|免费Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/SSR节点/Trojan节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-12-vpn-free.htm" title="免费南非VPN | 11月12日22.8M/S|免费V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/Clash节点免费节点订阅分享">免费南非VPN | 11月12日22.8M/S|免费V2ray节点/Singbox节点/SSR节点/Shadowrocket节点/Trojan节点/Clash节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-10-13.htm" title="免费南非VPN | 10月13日19.1M/S|免费Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点免费节点订阅分享">免费南非VPN | 10月13日19.1M/S|免费Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-4-node-share.htm" title="免费南非VPN | 11月4日19.8M/S|免费V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点免费节点订阅分享">免费南非VPN | 11月4日19.8M/S|免费V2ray节点/Clash节点/Singbox节点/Shadowrocket节点/Trojan节点/SSR节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/mianfei-vpn-2026-11-1.htm" title="免费南非VPN | 11月1日20.9M/S|免费V2ray节点/Trojan节点/SSR节点/Shadowrocket节点/Clash节点/Singbox节点免费节点订阅分享">免费南非VPN | 11月1日20.9M/S|免费V2ray节点/Trojan节点/SSR节点/Shadowrocket节点/Clash节点/Singbox节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-10-free-node-subscribe.htm" title="免费南非VPN | 11月10日21.3M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点免费节点订阅分享">免费南非VPN | 11月10日21.3M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/share-vpn-2026-11-13.htm" title="免费南非VPN | 11月13日22.8M/S|免费Clash节点/SSR节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点免费节点订阅分享">免费南非VPN | 11月13日22.8M/S|免费Clash节点/SSR节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点免费节点订阅分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-22-top-vpn-node.htm" title="免费南非VPN | 10月22日23M/S|免费V2ray节点/SSR节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅分享">免费南非VPN | 10月22日23M/S|免费V2ray节点/SSR节点/Singbox节点/Trojan节点/Shadowrocket节点/Clash节点免费节点订阅分享</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/mianfei-vpn-2026-10-19.htm" title="免费南非VPN | 10月19日20.2M/S|免费Trojan节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点/Singbox节点免费节点订阅分享">免费南非VPN | 10月19日20.2M/S|免费Trojan节点/Clash节点/SSR节点/V2ray节点/Shadowrocket节点/Singbox节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/share-vpn-2026-10-17.htm" title="免费南非VPN | 10月17日21.5M/S|免费V2ray节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点免费节点订阅分享">免费南非VPN | 10月17日21.5M/S|免费V2ray节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-11-8-top-vpn-node.htm" title="免费南非VPN | 11月8日19M/S|免费SSR节点/Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点免费节点订阅分享">免费南非VPN | 11月8日19M/S|免费SSR节点/Clash节点/Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点免费节点订阅分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/mianfei-vpn-2026-11-9.htm" title="免费南非VPN | 11月9日22.2M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Clash节点/Singbox节点免费节点订阅分享">免费南非VPN | 11月9日22.2M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Clash节点/Singbox节点免费节点订阅分享</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -405,7 +405,7 @@ A：Quantumult在规则管理上更加细腻，适合高级用户。Stash和Loon
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">10</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
+                <h4><span class="badge" style="float: right;">17</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">21</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
